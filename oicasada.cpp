@@ -27,7 +27,7 @@ void desenha()
 	//cout << "sin mouse <- -> " << senoMouse << endl;
 	//cout << "cos mouse <- ->" << cosenoMouse << endl;
 	
-	glClear(GL_COLOR_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.1, 0.4, 0.7, 1.0);
 	
 	glLoadIdentity();	
@@ -170,6 +170,8 @@ int main(int argc, char * argv[])
 	
 	glutKeyboardFunc(teclado);
 	glutPassiveMotionFunc(posicaoMouse);
+	
+	glEnable(GL_DEPTH_TEST);
 		
 	glMatrixMode(GL_PROJECTION);
 	gluPerspective(fov, 800.0f/600.f, near, far);
