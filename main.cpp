@@ -1,7 +1,8 @@
 #include <GL/freeglut.h>
 #include <math.h>
 #include <iostream>
-#include "textura.h"
+#include "textura.cpp" // debian + geany
+//#include "textura.h" //ruindows + codeblock
 #define PI 3.14159265
 
 using namespace std;
@@ -60,11 +61,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(-3.5, 0.4, 0);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(16, 2);
 		glVertex3f(-0.1, 0.4, 0);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(16, 0);
 		glVertex3f(-0.1, 0, 0);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -77,11 +78,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(0.1, 0, 0);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(0.1, 0.4, 0);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(16, 2);
 		glVertex3f(3.5, 0.4, 0);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(16, 0);
 		glVertex3f(3.5, 0, 0);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -93,11 +94,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, -4);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(-3.5, 0.4, -4);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(32, 2);
 		glVertex3f(3.5, 0.4, -4);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(32, 0);
 		glVertex3f(3.5, 0, -4);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -109,11 +110,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(-3.5, 0.4, 0);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(20, 2);
 		glVertex3f(-3.5, 0.4, -4);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(20, 0);
 		glVertex3f(-3.5, 0, -4);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -125,11 +126,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(3.5, 0, 0);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(3.5, 0.4, 0);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(20, 2);
 		glVertex3f(3.5, 0.4, -4);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(20, 0);
 		glVertex3f(3.5, 0, -4);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -141,11 +142,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, -2);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(-3.5, 0.4, -2);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(16, 2);
 		glVertex3f(1.9, 0.4, -2);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(16, 0);
 		glVertex3f(1.9, 0, -2);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -157,11 +158,11 @@ void desenha()
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(2.1, 0, -2);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 2);
 		glVertex3f(2.1, 0.4, -2);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(4, 2);
 		glVertex3f(3.5, 0.4, -2);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(4, 0);
 		glVertex3f(3.5, 0, -2);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -172,13 +173,13 @@ void desenha()
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
-		glVertex3f(0.5, 0, 0);
-		glTexCoord2f(0, 1);
-		glVertex3f(0.5, 0.4, 0);
-		glTexCoord2f(1, 1);
-		glVertex3f(0.5, 0.4, -0.9);
-		glTexCoord2f(1, 0);
-		glVertex3f(0.5, 0, -0.9);
+		glVertex3f(-0.5, 0, 0);
+		glTexCoord2f(0, 2);
+		glVertex3f(-0.5, 0.4, 0);
+		glTexCoord2f(3, 2);
+		glVertex3f(-0.5, 0.4, -0.9);
+		glTexCoord2f(3, 0);
+		glVertex3f(-0.5, 0, -0.9);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -188,13 +189,13 @@ void desenha()
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
-		glVertex3f(0.5, 0, -1.1);
-		glTexCoord2f(0, 1);
-		glVertex3f(0.5, 0.4, -1.1);
-		glTexCoord2f(1, 1);
-		glVertex3f(0.5, 0.4, -2);
-		glTexCoord2f(1, 0);
-		glVertex3f(0.5, 0, -2);
+		glVertex3f(-0.5, 0, -1.1);
+		glTexCoord2f(0, 2);
+		glVertex3f(-0.5, 0.4, -1.1);
+		glTexCoord2f(3, 2);
+		glVertex3f(-0.5, 0.4, -2);
+		glTexCoord2f(3, 0);
+		glVertex3f(-0.5, 0, -2);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -204,13 +205,13 @@ void desenha()
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
-		glVertex3f(-1.5, 0, 0);
-		glTexCoord2f(0, 1);
-		glVertex3f(-1.5, 0.4, 0);
-		glTexCoord2f(1, 1);
-		glVertex3f(-1.5, 0.4, -0.9);
-		glTexCoord2f(1, 0);
-		glVertex3f(-1.5, 0, -0.9);
+		glVertex3f(1.5, 0, 0);
+		glTexCoord2f(0, 2);
+		glVertex3f(1.5, 0.4, 0);
+		glTexCoord2f(3, 2);
+		glVertex3f(1.5, 0.4, -0.9);
+		glTexCoord2f(3, 0);
+		glVertex3f(1.5, 0, -0.9);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -220,13 +221,13 @@ void desenha()
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
-		glVertex3f(-1.5, 0, -1.1);
-		glTexCoord2f(0, 1);
-		glVertex3f(-1.5, 0.4, -1.1);
-		glTexCoord2f(1, 1);
-		glVertex3f(-1.5, 0.4, -2.9);
-		glTexCoord2f(1, 0);
-		glVertex3f(-1.5, 0, -2.9);
+		glVertex3f(1.5, 0, -1.1);
+		glTexCoord2f(0, 2);
+		glVertex3f(1.5, 0.4, -1.1);
+		glTexCoord2f(3, 2);
+		glVertex3f(1.5, 0.4, -2.9);
+		glTexCoord2f(3, 0);
+		glVertex3f(1.5, 0, -2.9);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -236,13 +237,13 @@ void desenha()
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
-		glVertex3f(-1.5, 0, -3.1);
-		glTexCoord2f(0, 1);
-		glVertex3f(-1.5, 0.4, -3.1);
-		glTexCoord2f(1, 1);
-		glVertex3f(-1.5, 0.4, -4);
-		glTexCoord2f(1, 0);
-		glVertex3f(-1.5, 0, -4);
+		glVertex3f(1.5, 0, -3.1);
+		glTexCoord2f(0, 2);
+		glVertex3f(1.5, 0.4, -3.1);
+		glTexCoord2f(4, 2);
+		glVertex3f(1.5, 0.4, -4);
+		glTexCoord2f(4, 0);
+		glVertex3f(1.5, 0, -4);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
@@ -250,6 +251,7 @@ void desenha()
 
 
 	//teto
+	
 	glColor3f(0.6, 0.6, 0.6);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -297,10 +299,10 @@ void desenha()
 
 void checaColisoes()
 {
-	if (((-3.6 <= xEye && xEye <= -3.4) && (-4 <= zEye && zEye <= 0))
-	||   ((3.4 <= xEye && xEye <=  3.6) && (-4 <= zEye && zEye <= 0))
-	||  ((-1.6 <= xEye && xEye <= -1.4) && ((-4<= zEye && zEye <=-3.2) || (-2.8 <= zEye && zEye <= -1.2) || (-0.8 <= zEye && zEye <=0)))
-	||   ((0.4 <= xEye && xEye <= 0.6)  && ((-2<= zEye && zEye <= -1.2)|| (-0.8 <= zEye && zEye <= 0)))
+	if (((-3.6 <= xEye && xEye <= -3.4) && (-4 <= zEye && zEye <= 0)) //laterais
+	||   ((3.4 <= xEye && xEye <=  3.6) && (-4 <= zEye && zEye <= 0)) //laterais
+	||  ((1.4 <= xEye && xEye <= 1.6) && ((-4<= zEye && zEye <=-3.2) || (-2.8 <= zEye && zEye <= -1.2) || (-0.8 <= zEye && zEye <=0)))
+	||   ((-0.6 <= xEye && xEye <= -0.4)  && ((-2<= zEye && zEye <= -1.2)|| (-0.8 <= zEye && zEye <= 0)))
 
 	||  ((-0.1 <= zEye && zEye <= 0.1)  &&((-3.5<=xEye && xEye <= -0.2)|| (0.2 <=  xEye && xEye <= 3.5)))
 	||  ((-2.1 <= zEye && zEye <= -1.9) &&((-3.5<=xEye && xEye <= 1.8) || (2.2 <=  xEye && xEye <= 3.5)))
@@ -332,23 +334,23 @@ void teclado (unsigned char tecla, int x, int y)
 {
 	if(tecla == 'w')
 	{
-		zEye -= 0.1*cosenoMouse;
-		xEye += 0.1*senoMouse;
+		zEye -= 0.08*cosenoMouse;
+		xEye += 0.08*senoMouse;
 	}
 	if(tecla == 's')
 	{
-		zEye += 0.1*cosenoMouse;
-		xEye -= 0.1*senoMouse;
+		zEye += 0.08*cosenoMouse;
+		xEye -= 0.08*senoMouse;
 	}
 	if(tecla == 'd')
 	{
-		xEye += 0.1*cosenoMouse;
-		zEye += 0.1*senoMouse;
+		xEye += 0.08*cosenoMouse;
+		zEye += 0.08*senoMouse;
 	}
 	if(tecla == 'a')
 	{
-		xEye -= 0.1*cosenoMouse;
-		zEye -= 0.1*senoMouse;
+		xEye -= 0.08*cosenoMouse;
+		zEye -= 0.08*senoMouse;
 	}
 	if(tecla == 'y')
 	{
