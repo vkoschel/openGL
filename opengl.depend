@@ -1,8 +1,9 @@
 # depslib dependency file v1.0
-1591746765 source:e:\uniararas\compgrafica\opengl\main.cpp
+1591750039 source:e:\uniararas\compgrafica\opengl\main.cpp
 	<GL/freeglut.h>
 	<math.h>
 	<iostream>
+	"textura.h"
 
 1426360528 e:\uniararas\compgrafica\freeglut-mingw-3.0.0-1.mp\freeglut\include\gl\freeglut.h
 	"freeglut_std.h"
@@ -20,5 +21,42 @@
 	<stdlib.h>
 
 1426360528 e:\uniararas\compgrafica\freeglut-mingw-3.0.0-1.mp\freeglut\include\gl\freeglut_ext.h
+	<stdarg.h>
+
+1591750109 e:\uniararas\compgrafica\opengl\textura.h
+	<GL/freeglut.h>
+	<cstdlib>
+	<cstdio>
+
+1591750859 source:e:\uniararas\compgrafica\git\opengl\main.cpp
+	<GL/freeglut.h>
+	<math.h>
+	<iostream>
+	"textura.h"
+
+1591750109 e:\uniararas\compgrafica\git\opengl\textura.h
+	<GL/freeglut.h>
+	<cstdlib>
+	<cstdio>
+
+1591750109 source:e:\uniararas\compgrafica\git\opengl\textura.cpp
+	"textura.h"
+
+1426360528 e:\uniararas\compgrafica\git\opengl\include\gl\freeglut.h
+	"freeglut_std.h"
+	"freeglut_ext.h"
+
+1426360528 e:\uniararas\compgrafica\git\opengl\include\gl\freeglut_std.h
+	<windows.h>
+	<EGL/egl.h>
+	<GLES/gl.h>
+	<GLES2/gl2.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
+
+1426360528 e:\uniararas\compgrafica\git\opengl\include\gl\freeglut_ext.h
 	<stdarg.h>
 

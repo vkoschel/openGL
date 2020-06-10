@@ -31,14 +31,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
-			<Add directory="../freeglut-MinGW-3.0.0-1.mp/freeglut/include" />
+			<Add directory="include" />
 		</Compiler>
 		<Linker>
-			<Add library="../freeglut-MinGW-3.0.0-1.mp/freeglut/lib/libfreeglut.a" />
-			<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/libopengl32.a" />
-			<Add library="C:/Program Files (x86)/CodeBlocks/MinGW/lib/libglu32.a" />
+			<Add library="include/libfreeglut.a" />
+			<Add library="include/libopengl32.a" />
+			<Add library="include/libglu32.a" />
 		</Linker>
 		<Unit filename="main.cpp" />
+		<Unit filename="textura.cpp" />
+		<Unit filename="textura.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

@@ -1,7 +1,7 @@
 #include <GL/freeglut.h>
 #include <math.h>
 #include <iostream>
-//#include "textura.cpp"
+#include "textura.h"
 #define PI 3.14159265
 
 using namespace std;
@@ -56,7 +56,7 @@ void desenha()
 	//fachada a
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
@@ -73,7 +73,7 @@ void desenha()
 	//fachada b
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[1]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(0.1, 0, 0);
@@ -89,7 +89,7 @@ void desenha()
 	//fundos
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[2]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, -4);
@@ -105,7 +105,7 @@ void desenha()
 	//laterais
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[3]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
@@ -121,7 +121,7 @@ void desenha()
 	//laterais
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(3.5, 0, 0);
@@ -137,7 +137,7 @@ void desenha()
 	//interna verde (vide planta) a
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, -2);
@@ -153,7 +153,7 @@ void desenha()
 	//interna verde b
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[1]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(2.1, 0, -2);
@@ -169,7 +169,7 @@ void desenha()
 	//interna azul a
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[2]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(0.5, 0, 0);
@@ -185,7 +185,7 @@ void desenha()
 	//interna azul b
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[3]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(0.5, 0, -1.1);
@@ -201,7 +201,7 @@ void desenha()
 	//interna laranja a
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-1.5, 0, 0);
@@ -217,7 +217,7 @@ void desenha()
 	//interna laranja b
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[1]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-1.5, 0, -1.1);
@@ -233,7 +233,7 @@ void desenha()
 	//interna laranja c
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[2]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-1.5, 0, -3.1);
@@ -252,7 +252,7 @@ void desenha()
 	//teto
 	glColor3f(0.6, 0.6, 0.6);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[3]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0.4, 0);
@@ -268,7 +268,7 @@ void desenha()
 	//chão
 	glColor3f(0.1, 0.1, 0.1);
 	glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
@@ -379,11 +379,8 @@ int main(int argc, char * argv[])
 	gluPerspective(fov, 800.0f/600.f, near1, far1);
 	glMatrixMode(GL_MODELVIEW);
 
-	//glGenTextures(3, texels);
-	//LoadBitmap("ZICA11.bmp");
-	//LoadBitmap("ZICA22.bmp");
-	//LoadBitmap("ZICA33.bmp");
-	//LoadBitmap("korsa2.bmp");
+	glGenTextures(1, texels);
+	LoadBitmap("assets/parede.bmp");
 
 	//glEnable(GL_LIGHTING);
 
