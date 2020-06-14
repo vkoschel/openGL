@@ -2,7 +2,7 @@
 #include <math.h>
 #include <iostream>
 #include "textura.cpp" // debian + geany
-//#include "textura.h" //ruindows + codeblock
+//#include "textura.h" //ruindows + cockblock
 #define PI 3.14159265
 
 using namespace std;
@@ -26,17 +26,6 @@ float angulo = 0;
 void desenha()
 {
 	glLoadIdentity();
-	float posLuz0[] = {0, 10, 0, 0};
-	float luzAmb0[] = {1, 0, 0, 0};
-	float luzDif0[] = {0, 1, 0, 1};
-
-	float refAmb0[] = {0, 0, 0, 0};
-
-	glLightfv(GL_LIGHT0, GL_POSITION, posLuz0);
-	glLightfv(GL_LIGHT0, GL_AMBIENT, luzAmb0);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, luzDif0);
-
-	glMaterialfv(GL_FRONT, GL_AMBIENT, refAmb0);
 
 	senoMouse = sin(xCenter*PI/180.0f);
 	cosenoMouse = cos(xCenter*PI/180.0f);
@@ -49,9 +38,16 @@ void desenha()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.1, 0.4, 0.7, 1.0);
 
+	
+	glMatrixMode(GL_PROJECTION);
+	
+		glLoadIdentity();	
+		gluPerspective(fov, 800.0f/600.f, near1, far1);
+		gluLookAt(xEye, yEye, zEye, senoMouse*50.0f, yCenter, -cosenoMouse*50.0f, 0, 1, 0);
+	
+	glMatrixMode(GL_MODELVIEW);
+	
 	glLoadIdentity();
-
-	gluLookAt(xEye, yEye, zEye, senoMouse*50.0f, yCenter, -cosenoMouse*50.0f, 0, 1, 0);
 
 
 	//fachada a
@@ -59,6 +55,7 @@ void desenha()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, 0, -1);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
 		glTexCoord2f(0, 2);
@@ -72,10 +69,12 @@ void desenha()
 
 
 	//fachada b
+	glNormal3d(0, 0, -1);
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, 0, -1);
 		glTexCoord2f(0, 0);
 		glVertex3f(0.1, 0, 0);
 		glTexCoord2f(0, 2);
@@ -92,6 +91,7 @@ void desenha()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, 0, -1);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, -4);
 		glTexCoord2f(0, 2);
@@ -103,15 +103,50 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//laterais
+	//laterais primeiros comodos
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
 		glTexCoord2f(0, 2);
 		glVertex3f(-3.5, 0.4, 0);
+		glTexCoord2f(20, 2);
+		glVertex3f(-3.5, 0.4, -2);
+		glTexCoord2f(20, 0);
+		glVertex3f(-3.5, 0, -2);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//laterais primeiros comodos
+	glColor3f(0.8, 0.3, 0.1);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBegin(GL_QUADS);
+		glNormal3d(-1, 0, 0);
+		glTexCoord2f(0, 0);
+		glVertex3f(3.5, 0, 0);
+		glTexCoord2f(0, 2);
+		glVertex3f(3.5, 0.4, 0);
+		glTexCoord2f(20, 2);
+		glVertex3f(3.5, 0.4, -2);
+		glTexCoord2f(20, 0);
+		glVertex3f(3.5, 0, -2);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+	
+	//laterais fundos
+	glColor3f(0.8, 0.3, 0.1);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
+		glTexCoord2f(0, 0);
+		glVertex3f(-3.5, 0, -2);
+		glTexCoord2f(0, 2);
+		glVertex3f(-3.5, 0.4, -2);
 		glTexCoord2f(20, 2);
 		glVertex3f(-3.5, 0.4, -4);
 		glTexCoord2f(20, 0);
@@ -119,15 +154,16 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//laterais
+	//laterais fundos
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(-1, 0, 0);
 		glTexCoord2f(0, 0);
-		glVertex3f(3.5, 0, 0);
+		glVertex3f(3.5, 0, -2.);
 		glTexCoord2f(0, 2);
-		glVertex3f(3.5, 0.4, 0);
+		glVertex3f(3.5, 0.4, -2);
 		glTexCoord2f(20, 2);
 		glVertex3f(3.5, 0.4, -4);
 		glTexCoord2f(20, 0);
@@ -135,11 +171,12 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna verde (vide planta) a
+	//interna verde (vide planta) a frente
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, 0, 1);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, -2);
 		glTexCoord2f(0, 2);
@@ -151,11 +188,12 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna verde b
+	//interna verde b frente
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, 0, 1);
 		glTexCoord2f(0, 0);
 		glVertex3f(2.1, 0, -2);
 		glTexCoord2f(0, 2);
@@ -166,12 +204,47 @@ void desenha()
 		glVertex3f(3.5, 0, -2);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
+	
+	//interna verde (vide planta) a fundo
+	glColor3f(0.8, 0.3, 0.1);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBegin(GL_QUADS);
+		glNormal3d(0, 0, -1);
+		glTexCoord2f(0, 0);
+		glVertex3f(-3.5, 0, -2.001);
+		glTexCoord2f(0, 2);
+		glVertex3f(-3.5, 0.4, -2.001);
+		glTexCoord2f(16, 2);
+		glVertex3f(1.9, 0.4, -2.001);
+		glTexCoord2f(16, 0);
+		glVertex3f(1.9, 0, -2.001);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+
+	//interna verde b ffundo
+	glColor3f(0.8, 0.3, 0.1);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texels[0]);
+	glBegin(GL_QUADS);
+		glNormal3d(0, 0, -1);
+		glTexCoord2f(0, 0);
+		glVertex3f(2.1, 0, -2.001);
+		glTexCoord2f(0, 2);
+		glVertex3f(2.1, 0.4, -2.001);
+		glTexCoord2f(4, 2);
+		glVertex3f(3.5, 0.4, -2.001);
+		glTexCoord2f(4, 0);
+		glVertex3f(3.5, 0, -2.001);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
 
 	//interna azul a
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(-0.5, 0, 0);
 		glTexCoord2f(0, 2);
@@ -188,6 +261,7 @@ void desenha()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(-0.5, 0, -1.1);
 		glTexCoord2f(0, 2);
@@ -204,6 +278,7 @@ void desenha()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(1.5, 0, 0);
 		glTexCoord2f(0, 2);
@@ -220,6 +295,7 @@ void desenha()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(1.5, 0, -1.1);
 		glTexCoord2f(0, 2);
@@ -236,6 +312,7 @@ void desenha()
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(1, 0, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(1.5, 0, -3.1);
 		glTexCoord2f(0, 2);
@@ -252,10 +329,11 @@ void desenha()
 
 	//teto
 	
-	glColor3f(0.6, 0.6, 0.6);
+	glColor3f(1, 1, 1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, -1, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0.4, 0);
 		glTexCoord2f(0, 1);
@@ -268,17 +346,18 @@ void desenha()
 	glDisable(GL_TEXTURE_2D);
 
 	//chão
-	glColor3f(0.1, 0.1, 0.1);
+	glColor3f(1, 1, 1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
 	glBegin(GL_QUADS);
+		glNormal3d(0, 1, 0);
 		glTexCoord2f(0, 0);
 		glVertex3f(-3.5, 0, 0);
-		glTexCoord2f(0, 1);
+		glTexCoord2f(0, 10);
 		glVertex3f(-3.5, 0, -4);
-		glTexCoord2f(1, 1);
+		glTexCoord2f(10, 10);
 		glVertex3f(3.5, 0, -4);
-		glTexCoord2f(1, 0);
+		glTexCoord2f(10, 0);
 		glVertex3f(3.5, 0, 0);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
@@ -293,6 +372,40 @@ void desenha()
 			glVertex3f(4, 0, i); glVertex3f(-4, 0, i);
 		}
 	glEnd();
+	
+	glPushMatrix();
+	
+	float emit[] = {1, 1, 1, 1};
+	float emit0[] = {0.1, 0.1, 0.1, 1};
+	glMaterialfv(GL_FRONT, GL_EMISSION, emit);
+	glTranslatef(-2.6, 0.35, -1.01);
+	glutSolidSphere(0.02, 100, 100);
+	//glMaterialfv(GL_FRONT, GL_EMISSION, emit0);
+	
+	
+	glPopMatrix();
+	
+	glPushMatrix();
+	
+	
+	glMaterialfv(GL_FRONT, GL_EMISSION, emit);
+	glTranslatef(2.6, 0.35, -1.01);
+	glutSolidSphere(0.02, 100, 100);
+	//glMaterialfv(GL_FRONT, GL_EMISSION, emit0);
+	
+	
+	glPopMatrix();
+	
+	glPushMatrix();
+	
+	
+	glMaterialfv(GL_FRONT, GL_EMISSION, emit);
+	glTranslatef(0, 0.35, -1.01);
+	glutSolidSphere(0.02, 100, 100);
+	glMaterialfv(GL_FRONT, GL_EMISSION, emit0);
+	
+	
+	glPopMatrix();
 
 	glutSwapBuffers();
 }
@@ -369,6 +482,47 @@ int main(int argc, char * argv[])
 	glutInit(&argc, argv);
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("dale");
+	
+	glEnable(GL_LIGHTING);
+
+	glEnable(GL_LIGHT0);
+	
+	GLfloat lightamb[] = {0, 0,0, 0};
+	GLfloat lightdif[] = {1, 1, 1, 1};
+	GLfloat lightspec[] = {0, 0, 0, 1};
+	GLfloat lightpos[] = {0, 0.1, -0.5, 1};
+	
+	glLightfv(GL_LIGHT0, GL_AMBIENT, lightamb);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightdif);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, lightspec);
+	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+	
+	
+	glEnable(GL_LIGHT1);
+	
+	GLfloat lightamb1[] = {0, 0,0, 0};
+	GLfloat lightdif1[] = {1, 1, 1, 1};
+	GLfloat lightspec1[] = {0, 0, 0, 1};
+	GLfloat lightpos1[] = {-2.6, 0.1, -0.5, 1};
+	
+	glLightfv(GL_LIGHT1, GL_AMBIENT, lightamb1);
+	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightdif1);
+	glLightfv(GL_LIGHT1, GL_SPECULAR, lightspec1);
+	glLightfv(GL_LIGHT1, GL_POSITION, lightpos1);
+	
+	
+	glEnable(GL_LIGHT2);
+	
+	GLfloat lightamb2[] = {0, 0,0, 0};
+	GLfloat lightdif2[] = {1, 1, 1, 1};
+	GLfloat lightspec2[] = {0, 0, 0, 1};
+	GLfloat lightpos2[] = {2.6, 0.1, -0.5, 1};
+	
+	glLightfv(GL_LIGHT2, GL_AMBIENT, lightamb2);
+	glLightfv(GL_LIGHT2, GL_DIFFUSE, lightdif2);
+	glLightfv(GL_LIGHT2, GL_SPECULAR, lightspec2);
+	glLightfv(GL_LIGHT2, GL_POSITION, lightpos2);
+	
 	glutDisplayFunc(desenha);
 	glutTimerFunc(0, timer, 0);
 
@@ -377,18 +531,10 @@ int main(int argc, char * argv[])
 
 	glEnable(GL_DEPTH_TEST);
 
-	glMatrixMode(GL_PROJECTION);
-	gluPerspective(fov, 800.0f/600.f, near1, far1);
-	glMatrixMode(GL_MODELVIEW);
-
 	glGenTextures(1, texels);
-	LoadBitmap("assets/parede.bmp");
+	LoadBitmap("assets/parede.bmp");	
 
-	//glEnable(GL_LIGHTING);
 
-	//glEnable(GL_LIGHT0);
-
-	//glShadeModel(GL_SMOOTH);
 
 	glutMainLoop();
 
