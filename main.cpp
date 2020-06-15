@@ -1,8 +1,8 @@
 #include <GL/freeglut.h>
 #include <math.h>
 #include <iostream>
-//#include "textura.cpp" // debian + geany
-#include "textura.h" //ruindows + cockblock
+#include "textura.cpp" // debian + geany
+//#include "textura.h" //windows + codeblocks
 #define PI 3.14159265
 
 using namespace std;
@@ -17,9 +17,9 @@ float yCenter = 0;
 float senoMouse = 0;
 float cosenoMouse = 1;
 
-float fov = 45.0f;
-float near1 = 0.1f;
-float far1 = 20.0f;
+float fov = 45;
+float near1 = 0.1;
+float far1 = 20;
 
 float angulo = 0;
 
@@ -27,12 +27,11 @@ void desenha()
 {
 	glLoadIdentity();
 
-	senoMouse = sin(xCenter*PI/180.0f);
-	cosenoMouse = cos(xCenter*PI/180.0f);
+	senoMouse = sin(xCenter*PI/180);
+	cosenoMouse = cos(xCenter*PI/180);
 
 	cout << "xEye   <- -> " << xEye << endl;
 	cout << "zEye<- ->" << zEye << endl;
-
 
 
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -42,15 +41,14 @@ void desenha()
 	glMatrixMode(GL_PROJECTION);
 
 		glLoadIdentity();
-		gluPerspective(fov, 800.0f/600.f, near1, far1);
-		gluLookAt(xEye, yEye, zEye, senoMouse*50.0f, yCenter, -cosenoMouse*50.0f, 0, 1, 0);
+		gluPerspective(fov, 800/600, near1, far1);
+		gluLookAt(xEye, yEye, zEye, senoMouse*50, yCenter, -cosenoMouse*50, 0, 1, 0);
 
 	glMatrixMode(GL_MODELVIEW);
 
     glLoadIdentity();
 
     //retrato
-
 	glColor3f(1, 1, 1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[1]);
@@ -64,14 +62,8 @@ void desenha()
 		glVertex3f(0, 0.39, -3.3);
 		glTexCoord2f(1, 0);
 		glVertex3f(0, 0.01, -3.3);
-
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
-
-
-
-
-
 
 	//fachada a 1
 	glColor3f(0.8, 0.3, 0.1);
@@ -107,7 +99,6 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-
 	//fachada b 1
 	glNormal3d(0, 0, -1);
 	glColor3f(0.8, 0.3, 0.1);
@@ -125,7 +116,6 @@ void desenha()
 		glVertex3f(3.5, 0, 0);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
-
 
 	//fachada b 2
 	glNormal3d(0, 0, -1);
@@ -315,7 +305,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna verde (vide planta) a frente
+	//interna eixo x a frente
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -332,7 +322,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna verde b frente
+	//interna eixo x b frente
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -349,7 +339,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna verde (vide planta) a fundo
+	//interna eixo x a fundo
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -366,7 +356,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna verde b ffundo
+	//interna eixo x b ffundo
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -383,7 +373,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna azul a 1
+	//interna eixo z // direita a 1
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -400,7 +390,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna azul a 2
+	//interna eixo z // x direita a 2
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -417,7 +407,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna azul b 1
+	//interna eixo z // direita b 1
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -434,7 +424,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna azul b 2
+	//interna eixo z // direita b 2
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -451,7 +441,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja a 1
+	//interna eixo z // esquerda a 1
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -468,7 +458,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja a 2
+	//interna eixo z // esquerda a 2
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -485,7 +475,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja b 1
+	//interna eixo z // esquerda b 1
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -502,7 +492,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja b 2
+	//interna eixo z // esquerda b 2
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -519,7 +509,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja c 1
+	//interna eixo z // esquerda c 1
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -536,7 +526,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja c 2
+	//interna eixo z // esquerda c 2
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -553,7 +543,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja d 1
+	//interna eixo z // esquerda d 1
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -570,7 +560,7 @@ void desenha()
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
 
-	//interna laranja d 2
+	//interna eixo z // esquerda d 2
 	glColor3f(0.8, 0.3, 0.1);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texels[0]);
@@ -642,29 +632,19 @@ void desenha()
 		glVertex3f(3.5, 0, 0);
 	glEnd();
 	glDisable(GL_TEXTURE_2D);
-
-	//chão
-
-
-
-
-
-
-
-	glEnd();
-	glDisable(GL_TEXTURE_2D);
-
-
+	
+	
+	//terreno
 	glColor3f(0, 0, 0);
-
 	glBegin(GL_LINES);
 		for (GLfloat i = -4; i <= 4; i += 0.1)
 		{
 			glVertex3f(i, 0, 4); glVertex3f(i, 0, -4);
 			glVertex3f(4, 0, i); glVertex3f(-4, 0, i);
-		}
+		}		
 	glEnd();
 
+	//lâmpadas
 	glPushMatrix();
         float emitB[] = {1, 1, 1, 1};
         float emit0[] = {0, 0, 0, 1};
@@ -687,18 +667,17 @@ void desenha()
         glutSolidSphere(0.02, 100, 100);
         glMaterialfv(GL_FRONT, GL_EMISSION, emit0);
 	glPopMatrix();
-
-    GLfloat lighpos[] = { xEye, 0.1, zEye, 1.0 };
-    GLfloat ligdir[] = { senoMouse*50.0f, 0, -cosenoMouse*50.0f };
+	
+	
+	//lanterna
+    GLfloat lighpos[] = {xEye, 0.1, zEye, 1.0};
+    GLfloat ligdir[] = {senoMouse*50, 0, -cosenoMouse*50};
 	GLfloat lightamb4[] = {0, 0,0, 1};
 	GLfloat lightdif4[] = {1., 1., 1., 1};
 	GLfloat lightspec4[] = {0, 0, 0, 0};
-
-
     glLightfv(GL_LIGHT4, GL_POSITION, lighpos);
     glLightfv(GL_LIGHT4, GL_SPOT_DIRECTION, ligdir);
-    glLightf(GL_LIGHT4, GL_SPOT_CUTOFF, 45.0);
-
+    glLightf(GL_LIGHT4, GL_SPOT_CUTOFF, 10.0);
 	glLightfv(GL_LIGHT4, GL_AMBIENT, lightamb4);
 	glLightfv(GL_LIGHT4, GL_DIFFUSE, lightdif4);
 	glLightfv(GL_LIGHT4, GL_SPECULAR, lightspec4);
@@ -764,60 +743,50 @@ void teclado (unsigned char tecla, int x, int y)
 	if(tecla == 'y')
 	{
 		yEye ++;
-
 	}
 	if(tecla == 'h')
 	{
 		yEye --;
-
 	}
 
 	if(tecla == 'i')
 	{
 		glDisable(GL_LIGHT0);
-
 	}
 
 	if(tecla == 'o')
 	{
 		glDisable(GL_LIGHT1);
-
 	}
 
 	if(tecla == 'p')
 	{
 		glDisable(GL_LIGHT2);
-
 	}
 
 	if(tecla == 'j')
 	{
 		glEnable(GL_LIGHT0);
-
 	}
 
 	if(tecla == 'k')
 	{
 		glEnable(GL_LIGHT1);
-
 	}
 
 	if(tecla == 'l')
 	{
 		glEnable(GL_LIGHT2);
-
 	}
 
 	if(tecla == 'f')
 	{
 		glEnable(GL_LIGHT4);
-
 	}
 
 	if(tecla == 'g')
 	{
 		glDisable(GL_LIGHT4);
-
 	}
 }
 
@@ -826,77 +795,57 @@ int main(int argc, char * argv[])
 	glutInit(&argc, argv);
 	glutInitWindowSize(800, 600);
 	glutCreateWindow("dale");
-
+	
 	glEnable(GL_LIGHTING);
-
 	glEnable(GL_LIGHT0);
-
 	GLfloat lightamb[] = {0, 0,0, 0};
 	GLfloat lightdif[] = {0, 0., 1, 1};
 	GLfloat lightspec[] = {0, 0, 0, 0};
 	GLfloat lightpos[] = {0, 0.35, -1.01, 1};
-
 	glLightfv(GL_LIGHT0, GL_AMBIENT, lightamb);
 	glLightfv(GL_LIGHT0, GL_DIFFUSE, lightdif);
 	glLightfv(GL_LIGHT0, GL_SPECULAR, lightspec);
 	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
-
 	glEnable(GL_LIGHT1);
-
 	GLfloat lightamb1[] = {0, 0,0, 0};
 	GLfloat lightdif1[] = {0, 1, 0, 1};
 	GLfloat lightspec1[] = {0, 0, 0, 0};
 	GLfloat lightpos1[] = {-2.6, 0.35, -1.01, 1};
-
 	glLightfv(GL_LIGHT1, GL_AMBIENT, lightamb1);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, lightdif1);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, lightspec1);
 	glLightfv(GL_LIGHT1, GL_POSITION, lightpos1);
 
-
 	glEnable(GL_LIGHT2);
-
 	GLfloat lightamb2[] = {0, 0,0, 0};
 	GLfloat lightdif2[] = {1, 0, 0, 1};
 	GLfloat lightspec2[] = {0, 0, 0, 0};
 	GLfloat lightpos2[] = {2.6, 0.35, -1.01, 1};
-
 	glLightfv(GL_LIGHT2, GL_AMBIENT, lightamb2);
 	glLightfv(GL_LIGHT2, GL_DIFFUSE, lightdif2);
 	glLightfv(GL_LIGHT2, GL_SPECULAR, lightspec2);
 	glLightfv(GL_LIGHT2, GL_POSITION, lightpos2);
 
 	glEnable(GL_LIGHT3);
-
 	GLfloat lightamb3[] = {0.25, 0.25,0.25, 1};
 	GLfloat lightdif3[] = {0., 0., 0., 1};
 	GLfloat lightspec3[] = {0, 0, 0, 0};
 	GLfloat lightpos3[] = {0, 10, 0, 1};
-
 	glLightfv(GL_LIGHT3, GL_AMBIENT, lightamb3);
 	glLightfv(GL_LIGHT3, GL_DIFFUSE, lightdif3);
 	glLightfv(GL_LIGHT3, GL_SPECULAR, lightspec3);
 	glLightfv(GL_LIGHT3, GL_POSITION, lightpos3);
 
-
-
-
 	glutDisplayFunc(desenha);
 	glutTimerFunc(0, timer, 0);
-
 	glutKeyboardFunc(teclado);
 	glutPassiveMotionFunc(posicaoMouse);
-
 	glEnable(GL_DEPTH_TEST);
 
-
-
-	glGenTextures(2, texels);
+	glGenTextures(3, texels);
 	LoadBitmap("assets/parede.bmp");
 	LoadBitmap("assets/retrato.bmp");
-
-
 
 	glutMainLoop();
 
