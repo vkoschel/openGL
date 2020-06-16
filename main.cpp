@@ -1,11 +1,8 @@
 #include <GL/freeglut.h>
 #include <math.h>
-#include <iostream>
 #include "textura.cpp" // debian + geany
 //#include "textura.h" //windows + codeblocks
 #define PI 3.14159265
-
-using namespace std;
 
 float xEye= 0;
 float yEye =0.1;
@@ -30,13 +27,8 @@ void desenha()
 	senoMouse = sin(xCenter*PI/180);
 	cosenoMouse = cos(xCenter*PI/180);
 
-	cout << "xEye   <- -> " << xEye << endl;
-	cout << "zEye<- ->" << zEye << endl;
-
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glClearColor(0.1, 0.4, 0.7, 1.0);
-
 
 	glMatrixMode(GL_PROJECTION);
 
@@ -720,71 +712,66 @@ void posicaoMouse(int x, int y)
 
 void teclado (unsigned char tecla, int x, int y)
 {
-	if(tecla == 'w')
+	if((tecla == 'w')|| (tecla == 'W'))
 	{
 		zEye -= 0.08*cosenoMouse;
 		xEye += 0.08*senoMouse;
 	}
-	if(tecla == 's')
+	
+	if((tecla == 's')|| (tecla == 'S'))
 	{
 		zEye += 0.08*cosenoMouse;
 		xEye -= 0.08*senoMouse;
 	}
-	if(tecla == 'd')
+	
+	if((tecla == 'd')|| (tecla == 'D'))
 	{
 		xEye += 0.08*cosenoMouse;
 		zEye += 0.08*senoMouse;
 	}
-	if(tecla == 'a')
+	
+	if((tecla == 'a')|| (tecla == 'A'))
 	{
 		xEye -= 0.08*cosenoMouse;
 		zEye -= 0.08*senoMouse;
-	}
-	if(tecla == 'y')
-	{
-		yEye ++;
-	}
-	if(tecla == 'h')
-	{
-		yEye --;
-	}
-
-	if(tecla == 'i')
+	}	
+	
+	if((tecla == 'i')|| (tecla == 'I'))
 	{
 		glDisable(GL_LIGHT0);
 	}
 
-	if(tecla == 'o')
+	if((tecla == 'o')|| (tecla == 'O'))
 	{
 		glDisable(GL_LIGHT1);
 	}
 
-	if(tecla == 'p')
+	if((tecla == 'p')|| (tecla == 'P'))
 	{
 		glDisable(GL_LIGHT2);
 	}
 
-	if(tecla == 'j')
+	if((tecla == 'j')|| (tecla == 'J'))
 	{
 		glEnable(GL_LIGHT0);
 	}
 
-	if(tecla == 'k')
+	if((tecla == 'k')|| (tecla == 'K'))
 	{
 		glEnable(GL_LIGHT1);
 	}
 
-	if(tecla == 'l')
+	if((tecla == 'l')|| (tecla == 'L'))
 	{
 		glEnable(GL_LIGHT2);
 	}
 
-	if(tecla == 'f')
+	if((tecla == 'f')|| (tecla == 'F'))
 	{
 		glEnable(GL_LIGHT4);
 	}
 
-	if(tecla == 'g')
+	if((tecla == 'g')|| (tecla == 'G'))
 	{
 		glDisable(GL_LIGHT4);
 	}
@@ -794,7 +781,7 @@ int main(int argc, char * argv[])
 {
 	glutInit(&argc, argv);
 	glutInitWindowSize(800, 600);
-	glutCreateWindow("dale");
+	glutCreateWindow("MANSÃO SINISTRA");
 	
 	glEnable(GL_LIGHTING);
 	glEnable(GL_LIGHT0);
